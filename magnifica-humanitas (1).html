@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnifica Humanitas — León XIV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ecdb;
+    --paper-2: #ebe2cd;
+    --paper-3: #e3d8bd;
+    --ink: #1a1714;
+    --ink-2: #4a4640;
+    --ink-3: #7a746a;
+    --rule: #c9bfa5;
+    --rule-2: #d8cfb5;
+    --red: #6e1b1b;
+    --red-2: #8b2a2a;
+    --olive: #515a3a;
+    --olive-2: #6a734a;
+    --blue: #2a3a5e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--ink); color: var(--paper); }
+  .display { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+  .mono { font-feature-settings: "tnum"; }
+  .frame { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 720px) { .frame { padding: 0 22px; } }
+
+  /* ========= MASTHEAD ========= */
+  .masthead {
+    padding: 24px 0 20px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+  .masthead .l, .masthead .r {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .masthead .r { text-align: right; }
+  .masthead .c {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--red);
+  }
+  @media (max-width: 720px) {
+    .masthead { grid-template-columns: 1fr; gap: 4px; text-align: center; }
+    .masthead .r { text-align: center; }
+  }
+
+  /* ========= HERO ========= */
+  .hero { padding: 70px 0 50px; text-align: center; }
+  .hero .kicker {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 32px;
+    position: relative;
+    display: inline-block;
+  }
+  .hero .kicker::before, .hero .kicker::after {
+    content: ''; position: absolute; top: 50%; width: 50px; height: 1px; background: var(--red); opacity: 0.5;
+  }
+  .hero .kicker::before { right: calc(100% + 16px); }
+  .hero .kicker::after { left: calc(100% + 16px); }
+  h1.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(58px, 11vw, 152px);
+    line-height: 0.94;
+    letter-spacing: -0.012em;
+    margin-bottom: 22px;
+  }
+  h1.title em { font-style: italic; font-weight: 500; }
+  .hero .deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 28px);
+    line-height: 1.35;
+    color: var(--ink-2);
+    max-width: 700px;
+    margin: 0 auto 12px;
+  }
+  .hero .byline {
+    margin-top: 28px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .hero .byline strong { color: var(--ink); font-weight: 500; }
+  .hero .byline span { margin: 0 10px; color: var(--rule); }
+
+  /* ========= NAVIGATION CHIPS ========= */
+  .chips {
+    margin-top: 56px;
+    padding-top: 36px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .chip {
+    padding: 10px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    background: transparent;
+    font-family: 'Spectral', serif;
+    font-size: 12px;
+    color: var(--ink-2);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .chip:hover { border-color: var(--red); color: var(--red); }
+  .chip .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--red);
+    font-size: 14px;
+  }
+
+  /* ========= SECTION ========= */
+  section.panel {
+    padding: 90px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .panel-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+  .panel-head .pn {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 84px;
+    line-height: 0.85;
+    color: var(--red);
+  }
+  .panel-head .ph .tag {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  .panel-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.04;
+    color: var(--ink);
+  }
+  .panel-head h2 em { font-style: italic; }
+  .panel-deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-2);
+    max-width: 740px;
+    line-height: 1.4;
+    margin-bottom: 56px;
+  }
+
+  /* ========= VS DIAGRAM (Babel/Jerusalen) ========= */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    align-items: stretch;
+    margin: 64px 0;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) {
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { display: none; }
+  }
+  .vs-side { padding: 36px 32px; position: relative; }
+  .vs-side.left { background: rgba(110, 27, 27, 0.06); }
+  .vs-side.right { background: rgba(81, 90, 58, 0.07); }
+  .vs-side h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .vs-side.left h3 { color: var(--red); }
+  .vs-side.right h3 { color: var(--olive); }
+  .vs-side .ref {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 24px;
+  }
+  .vs-side svg.scene { width: 100%; height: 140px; margin-bottom: 20px; }
+  .vs-side ul { list-style: none; }
+  .vs-side ul li {
+    padding: 12px 0 12px 28px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+    position: relative;
+    border-top: 1px solid var(--rule-2);
+  }
+  .vs-side ul li:first-child { border-top: none; }
+  .vs-side ul li::before {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 18px;
+  }
+  .vs-side.left ul li::before { content: '×'; color: var(--red); }
+  .vs-side.right ul li::before { content: '+'; color: var(--olive); }
+  .vs-mid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    background: var(--paper);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+  .vs-mid .v {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--ink-3);
+    transform: rotate(-90deg);
+    letter-spacing: 0.04em;
+  }
+
+  /* ========= AI TRAITS COMPARISON ========= */
+  .traits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 56px 0;
+    border: 1px solid var(--rule);
+  }
+  @media (max-width: 760px) { .traits { grid-template-columns: 1fr; } }
+  .traits-col { padding: 32px; }
+  .traits-col.human { background: var(--paper-2); border-right: 1px solid var(--rule); }
+  .traits-col.ai { background: var(--paper); }
+  @media (max-width: 760px) {
+    .traits-col.human { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+  .traits-col h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .traits-col.human h4 { color: var(--olive); }
+  .traits-col.ai h4 { color: var(--red); }
+  .traits-col .sub {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 28px;
+  }
+  .trait {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule-2);
+    align-items: start;
+  }
+  .trait:first-of-type { border-top: 1px solid var(--rule); }
+  .trait svg { width: 22px; height: 22px; margin-top: 2px; }
+  .trait .lbl {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .trait .dsc { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+
+  /* ========= HIDDEN CHAIN ========= */
+  .chain {
+    background: var(--ink);
+    color: var(--paper);
+    margin-top: 60px;
+    margin-bottom: 0;
+    padding: 56px 0;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chain-inner { padding: 0 40px; }
+  .chain-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 760px) { .chain-top { grid-template-columns: 1fr; } }
+  .chain-top .surface {
+    text-align: center;
+    padding: 28px 16px;
+    border: 1px solid rgba(243, 236, 219, 0.2);
+    border-radius: 2px;
+  }
+  .chain-top .surface svg { width: 36px; height: 36px; margin: 0 auto 10px; display: block; }
+  .chain-top .surface .stage {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 219, 0.5);
+    margin-bottom: 8px;
+  }
+  .chain-top .surface .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--paper);
+  }
+  .chain-arrow {
+    text-align: center;
+    margin: 24px 0;
+    color: rgba(243, 236, 219, 0.4);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .chain-arrow::before, .chain-arrow::after {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: rgba(243, 236, 219, 0.3);
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+  .chain-hidden {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(243, 236, 219, 0.2);
+    border-radius: 2px;
+  }
+  @media (max-width: 860px) { .chain-hidden { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .chain-hidden { grid-template-columns: 1fr; } }
+  .link {
+    padding: 28px 22px;
+    border-right: 1px solid rgba(243, 236, 219, 0.15);
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .link:last-child { border-right: none; }
+  @media (max-width: 860px) {
+    .link:nth-child(2) { border-right: none; }
+    .link:nth-child(1), .link:nth-child(2) { border-bottom: 1px solid rgba(243, 236, 219, 0.15); }
+  }
+  .link:hover { background: rgba(243, 236, 219, 0.05); }
+  .link svg { width: 32px; height: 32px; margin-bottom: 16px; }
+  .link .n {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 219, 0.5);
+    margin-bottom: 6px;
+  }
+  .link h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+  .link .who {
+    font-size: 13px;
+    color: rgba(243, 236, 219, 0.7);
+    line-height: 1.45;
+  }
+
+  /* ========= PILLARS ========= */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  @media (max-width: 860px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 32px 28px;
+    position: relative;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+  }
+  .pillar.work::before { background: var(--blue); }
+  .pillar.freedom::before { background: var(--olive); }
+  .pillar .roman {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 0.85;
+    color: var(--red);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+  .pillar.work .roman { color: var(--blue); }
+  .pillar.freedom .roman { color: var(--olive); }
+  .pillar h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .pillar p { font-size: 15px; line-height: 1.55; color: var(--ink-2); margin-bottom: 20px; }
+  .pillar .data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+  .pillar .data-item .label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+  .pillar .data-item .v {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  /* ========= WEAPONS / NO-LINE ========= */
+  .weapons-box {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-3) 100%);
+    border: 1px solid var(--rule);
+    padding: 48px;
+    border-radius: 2px;
+    margin: 32px 0 48px;
+    text-align: center;
+  }
+  .weapons-box .label {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .weapons-box .principal {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.15;
+    color: var(--ink);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .weapons-box .principal em {
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+  .criteria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) { .criteria { grid-template-columns: 1fr; } }
+  .criterion {
+    background: var(--paper);
+    padding: 32px 28px;
+  }
+  .criterion .cn {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .criterion svg { width: 36px; height: 36px; margin-bottom: 16px; }
+  .criterion h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .criterion p { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+
+  /* ========= TIMELINE ========= */
+  .tl-section { padding: 80px 0; border-top: 1px solid var(--rule); }
+  .tl-head { text-align: center; margin-bottom: 36px; }
+  .tl-head .tag {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+  }
+  .tl-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(32px, 4.4vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+  .tl-head p {
+    margin: 14px auto 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 600px;
+    line-height: 1.4;
+  }
+  .tl-wrap { position: relative; margin: 56px 0 0; padding-top: 60px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .tl-line { position: absolute; top: 90px; left: 4px; right: 4px; height: 1px; background: var(--rule); }
+  .tl-track {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .tl-item {
+    flex: 0 0 auto;
+    text-align: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0 4px;
+    color: inherit;
+  }
+  .tl-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--ink-3);
+    margin: 0 auto;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .tl-item:hover .tl-dot { transform: scale(1.3); border-color: var(--red); }
+  .tl-item:hover .tl-year { color: var(--ink); }
+  .tl-item.active .tl-dot {
+    background: var(--red);
+    border-color: var(--red);
+    transform: scale(1.5);
+    box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--red);
+  }
+  .tl-item.active .tl-year { color: var(--red); font-weight: 600; }
+  .tl-item.cur .tl-dot::after {
+    content: '';
+    position: absolute; inset: -8px;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    opacity: 0.45;
+  }
+  .tl-card {
+    margin: 50px auto 0;
+    max-width: 700px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 32px 36px;
+    text-align: left;
+    position: relative;
+  }
+  .tl-card::before {
+    content: ''; position: absolute; top: -1px; left: 36px; right: 36px; height: 3px; background: var(--red);
+  }
+  .tl-card .pope {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .tl-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .tl-card .y {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+  }
+  .tl-card p { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0; }
+
+  /* ========= QUOTE PLATES ========= */
+  .quote {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .quote .o { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--red-2); margin-bottom: 22px; letter-spacing: 0.8em; padding-left: 0.8em; }
+  .quote blockquote {
+    max-width: 900px; margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(24px, 3.6vw, 40px);
+    line-height: 1.22;
+  }
+  .quote cite {
+    display: block;
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 219, 0.6);
+    font-style: normal;
+  }
+
+  /* ========= IMPERATIVES ========= */
+  .imps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 40px;
+    border: 1px solid var(--rule);
+  }
+  @media (max-width: 860px) { .imps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .imps { grid-template-columns: 1fr; } }
+  .imp {
+    padding: 36px 26px;
+    border-right: 1px solid var(--rule);
+    background: var(--paper-2);
+  }
+  .imp:nth-child(4n) { border-right: none; }
+  @media (max-width: 860px) {
+    .imp:nth-child(2n) { border-right: none; }
+    .imp:nth-child(1), .imp:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  }
+  @media (max-width: 500px) {
+    .imp { border-right: none; }
+    .imp:nth-child(-n+3) { border-bottom: 1px solid var(--rule); }
+  }
+  .imp svg { width: 42px; height: 42px; margin-bottom: 20px; color: var(--red); }
+  .imp .vb {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .imp h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .imp p { font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0; }
+
+  /* ========= COLOPHON ========= */
+  .col {
+    padding: 90px 0 70px;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  .col .mk { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--red); margin-bottom: 20px; }
+  .col h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    margin-bottom: 22px;
+  }
+  .col p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    max-width: 560px;
+    margin: 0 auto 28px;
+    color: var(--ink-2);
+    font-size: 18px;
+    line-height: 1.45;
+  }
+  .col .sig {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    line-height: 1.8;
+  }
+  .col .sig strong { color: var(--red); font-weight: 500; }
+  footer.foot {
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: center;
+  }
+
+  /* reveal */
+  .rv { opacity: 0; transform: translateY(16px); transition: all 0.7s ease; }
+  .rv.in { opacity: 1; transform: none; }
+
+  @media (max-width: 760px) {
+    .panel-head { grid-template-columns: 1fr; gap: 8px; }
+    .panel-head .pn { font-size: 64px; }
+    section.panel { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="l">Lectura visual</div>
+  <div class="c">Encíclica · Doctrina social</div>
+  <div class="r">Estudio · 2026</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">S. S. León XIV · 15 mayo 2026</div>
+  <h1 class="title display">Magnifica<br><em>Humanitas</em></h1>
+  <p class="deck">Sobre la custodia de la persona humana en el tiempo de la inteligencia artificial.</p>
+  <div class="byline">
+    <strong>5</strong> capítulos <span>·</span> <strong>245</strong> párrafos <span>·</span> <strong>135</strong> años de Rerum Novarum <span>·</span> <strong>1.ª</strong> encíclica social del pontificado
+  </div>
+
+  <nav class="chips">
+    <a href="#choice" class="chip"><span class="num">i</span> La elección</a>
+    <a href="#ai" class="chip"><span class="num">ii</span> Qué es la IA</a>
+    <a href="#chain" class="chip"><span class="num">iii</span> La cadena oculta</a>
+    <a href="#pillars" class="chip"><span class="num">iv</span> Tres pilares</a>
+    <a href="#weapons" class="chip"><span class="num">v</span> Armas e IA</a>
+    <a href="#tradition" class="chip"><span class="num">vi</span> 135 años</a>
+    <a href="#call" class="chip"><span class="num">vii</span> Llamamiento</a>
+  </nav>
+</section>
+
+<!-- SECTION I: THE CHOICE -->
+<section class="panel" id="choice">
+  <div class="panel-head">
+    <div class="pn">i</div>
+    <div class="ph">
+      <div class="tag">La pregunta de fondo</div>
+      <h2>Dos modos de <em>construir</em> el mundo.</h2>
+    </div>
+  </div>
+  <p class="panel-deck">León XIV no plantea la elección como "tecnología sí o no". La encíclica gira en torno a dos imágenes bíblicas opuestas.</p>
+
+  <div class="vs">
+    <div class="vs-side left">
+      <h3>Babel</h3>
+      <div class="ref">Génesis 11, 1–9</div>
+      <svg class="scene" viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(120 0) rotate(-8 40 100)" fill="none" stroke="#6e1b1b" stroke-width="1.2">
+          <polygon points="0,100 80,100 70,80 10,80"/>
+          <polygon points="10,80 70,80 62,62 18,62"/>
+          <polygon points="18,62 62,62 56,46 24,46"/>
+          <polygon points="24,46 56,46 51,30 29,30"/>
+          <g transform="translate(36 15) rotate(35)">
+            <polygon points="0,0 22,0 18,-9 4,-9"/>
+          </g>
+          <line x1="40" y1="100" x2="42" y2="68" stroke-dasharray="2,2"/>
+          <line x1="35" y1="80" x2="38" y2="50" stroke-dasharray="2,2"/>
+        </g>
+        <line x1="0" y1="120" x2="300" y2="120" stroke="#6e1b1b" stroke-width="0.6"/>
+        <g fill="#6e1b1b" opacity="0.6">
+          <rect x="20" y="115" width="10" height="4" transform="rotate(-12 25 117)"/>
+          <rect x="240" y="116" width="12" height="4" transform="rotate(10 246 118)"/>
+          <rect x="60" y="118" width="8" height="3"/>
+          <rect x="200" y="117" width="10" height="3" transform="rotate(-5 205 119)"/>
+        </g>
+      </svg>
+      <ul>
+        <li>Una sola lengua, una sola dirección</li>
+        <li>Uniformidad que elimina la diversidad</li>
+        <li>Eficiencia por encima de la dignidad</li>
+        <li>Cielo conquistado sin bendición</li>
+        <li>Comunicación rota · Dispersión final</li>
+      </ul>
+    </div>
+    <div class="vs-mid"><div class="v">vs.</div></div>
+    <div class="vs-side right">
+      <h3>Jerusalén</h3>
+      <div class="ref">Nehemías 2–6</div>
+      <svg class="scene" viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#515a3a" stroke-width="1.2">
+          <line x1="0" y1="120" x2="300" y2="120" stroke-width="0.6"/>
+          <rect x="40" y="60" width="40" height="60"/>
+          <rect x="36" y="54" width="48" height="6"/>
+          <rect x="38" y="46" width="6" height="8"/>
+          <rect x="50" y="46" width="6" height="8"/>
+          <rect x="62" y="46" width="6" height="8"/>
+          <rect x="74" y="46" width="6" height="8"/>
+          <rect x="80" y="80" width="60" height="40"/>
+          <rect x="78" y="74" width="64" height="6"/>
+          <rect x="82" y="66" width="6" height="8"/>
+          <rect x="94" y="66" width="6" height="8"/>
+          <rect x="106" y="66" width="6" height="8"/>
+          <rect x="118" y="66" width="6" height="8"/>
+          <rect x="130" y="66" width="6" height="8"/>
+          <rect x="140" y="40" width="40" height="80"/>
+          <rect x="136" y="34" width="48" height="6"/>
+          <rect x="138" y="26" width="6" height="8"/>
+          <rect x="150" y="26" width="6" height="8"/>
+          <rect x="162" y="26" width="6" height="8"/>
+          <rect x="174" y="26" width="6" height="8"/>
+          <path d="M 152 120 L 152 90 Q 152 78 160 78 Q 168 78 168 90 L 168 120" fill="#515a3a" fill-opacity="0.85"/>
+          <rect x="180" y="80" width="60" height="40"/>
+          <rect x="178" y="74" width="64" height="6"/>
+          <rect x="182" y="66" width="6" height="8"/>
+          <rect x="194" y="66" width="6" height="8"/>
+          <rect x="206" y="66" width="6" height="8"/>
+          <rect x="218" y="66" width="6" height="8"/>
+          <rect x="230" y="66" width="6" height="8"/>
+          <rect x="240" y="60" width="40" height="60"/>
+          <rect x="236" y="54" width="48" height="6"/>
+          <rect x="238" y="46" width="6" height="8"/>
+          <rect x="250" y="46" width="6" height="8"/>
+          <rect x="262" y="46" width="6" height="8"/>
+          <rect x="274" y="46" width="6" height="8"/>
+        </g>
+        <g fill="#515a3a">
+          <circle cx="55" cy="40" r="2"/>
+          <circle cx="100" cy="60" r="2"/>
+          <circle cx="125" cy="60" r="2"/>
+          <circle cx="155" cy="20" r="2"/>
+          <circle cx="170" cy="20" r="2"/>
+          <circle cx="200" cy="60" r="2"/>
+          <circle cx="225" cy="60" r="2"/>
+          <circle cx="265" cy="40" r="2"/>
+        </g>
+      </svg>
+      <ul>
+        <li>Cada familia, su tramo de muralla</li>
+        <li>Vínculos antes que piedras</li>
+        <li>Sacerdotes, artesanos, mujeres, jóvenes</li>
+        <li>Dios en el centro, responsabilidad compartida</li>
+        <li>Comunión · No homogeneización</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE I -->
+<div class="quote">
+  <div class="o">✦&nbsp;✦&nbsp;✦</div>
+  <blockquote>La primera elección no es entre un sí o un no a la tecnología, sino entre construir Babel o reconstruir Jerusalén.</blockquote>
+  <cite>León XIV · §9</cite>
+</div>
+
+<div class="frame">
+<!-- SECTION II: WHAT IS / IS NOT AI -->
+<section class="panel" id="ai">
+  <div class="panel-head">
+    <div class="pn">ii</div>
+    <div class="ph">
+      <div class="tag">Capítulo tercero · La definición</div>
+      <h2>La IA no es <em>inteligencia humana</em>.</h2>
+    </div>
+  </div>
+  <p class="panel-deck">El Pontífice distingue con cuidado. Los sistemas imitan funciones humanas con potencia asombrosa, pero les falta lo decisivo. La encíclica detalla, rasgo a rasgo, lo que la separa de la persona.</p>
+
+  <div class="traits">
+    <div class="traits-col human">
+      <h4>El ser humano</h4>
+      <div class="sub">tiene · vive · crece</div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#515a3a" stroke-width="1.5"><circle cx="12" cy="7" r="3"/><path d="M 6 21 Q 12 12 18 21"/></svg>
+        <div><span class="lbl">Cuerpo</span><span class="dsc">Pasa por la alegría y el dolor. Madura en las relaciones reales.</span></div>
+      </div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#515a3a" stroke-width="1.5"><path d="M 12 21 C 4 14 4 8 8 6 C 10 5 12 7 12 9 C 12 7 14 5 16 6 C 20 8 20 14 12 21 Z"/></svg>
+        <div><span class="lbl">Conciencia moral</span><span class="dsc">Juzga el bien y el mal. Asume el peso de las consecuencias.</span></div>
+      </div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#515a3a" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M 12 7 V 12 L 15 14"/></svg>
+        <div><span class="lbl">Tiempo interior</span><span class="dsc">Crece por decisiones, errores, perdón y fidelidad.</span></div>
+      </div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#515a3a" stroke-width="1.5"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="9" r="2.5"/><path d="M 4 20 Q 4 14 8 14 H 16 Q 20 14 20 20"/></svg>
+        <div><span class="lbl">Relación auténtica</span><span class="dsc">Reconoce al otro como persona, no como dato.</span></div>
+      </div>
+    </div>
+    <div class="traits-col ai">
+      <h4>La IA</h4>
+      <div class="sub">imita · calcula · adapta</div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6e1b1b" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="1"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="14" x2="20" y2="14"/><line x1="9" y1="4" x2="9" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/></svg>
+        <div><span class="lbl">Sólo datos</span><span class="dsc">Sin cuerpo. Sin experiencia. Sin afecto vivido.</span></div>
+      </div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6e1b1b" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+        <div><span class="lbl">Sin juicio moral</span><span class="dsc">No capta el sentido último. No asume consecuencias.</span></div>
+      </div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6e1b1b" stroke-width="1.5"><path d="M 4 12 L 8 8 L 12 12 L 16 8 L 20 12"/><path d="M 4 18 L 8 14 L 12 18 L 16 14 L 20 18"/></svg>
+        <div><span class="lbl">Adaptación estadística</span><span class="dsc">Aprende de datos. No de la vida. No hay crecimiento interior.</span></div>
+      </div>
+      <div class="trait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6e1b1b" stroke-width="1.5"><path d="M 4 8 Q 7 4 12 4 Q 17 4 20 8"/><path d="M 4 8 L 4 12 Q 4 16 8 18 H 16 Q 20 16 20 12 V 8"/><path d="M 9 12 L 11 14 L 15 10" stroke-dasharray="2,2"/></svg>
+        <div><span class="lbl">Empatía simulada</span><span class="dsc">"Cuando la palabra es simulada, no construye una relación, sino una apariencia."</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weapons-box" style="margin-top: 32px;">
+    <div class="label">El descubrimiento más inquietante</div>
+    <p class="principal">Las inteligencias artificiales modernas están <em>más cultivadas que construidas</em>. Ni siquiera sus desarrolladores comprenden plenamente cómo funcionan por dentro.</p>
+  </div>
+</section>
+</div>
+
+<!-- SECTION III: HIDDEN CHAIN -->
+<div class="frame">
+<section class="panel" id="chain">
+  <div class="panel-head">
+    <div class="pn">iii</div>
+    <div class="ph">
+      <div class="tag">Cadena de suministro · §173–179</div>
+      <h2>La <em>cadena oculta</em> detrás de cada respuesta.</h2>
+    </div>
+  </div>
+  <p class="panel-deck">«En el mundo de la IA nada es inmaterial ni mágico.» El Papa nombra a quienes sostienen la cadena para que el resto del mundo no los vea.</p>
+
+  <div class="chain">
+    <div class="chain-inner">
+      <div class="chain-top">
+        <div class="surface">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f3ecdb" stroke-width="1.3"><path d="M 4 6 H 20 V 16 H 13 L 9 19 V 16 H 4 Z"/></svg>
+          <div class="stage">Lo que ves</div>
+          <div class="name">Tu pregunta</div>
+        </div>
+        <div class="surface">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f3ecdb" stroke-width="1.3"><rect x="4" y="5" width="16" height="14" rx="1"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="1" fill="#f3ecdb"/></svg>
+          <div class="stage">Capa intermedia</div>
+          <div class="name">El modelo</div>
+        </div>
+        <div class="surface">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f3ecdb" stroke-width="1.3"><path d="M 4 18 L 12 6 L 20 18 Z"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+          <div class="stage">Lo que vuelve</div>
+          <div class="name">La respuesta</div>
+        </div>
+      </div>
+
+      <div class="chain-arrow">Y debajo, lo que no se ve</div>
+
+      <div class="chain-hidden">
+        <div class="link">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#f3ecdb" stroke-width="1.4"><rect x="5" y="6" width="22" height="14" rx="1"/><line x1="9" y1="11" x2="23" y2="11"/><line x1="9" y1="14" x2="20" y2="14"/><line x1="9" y1="17" x2="17" y2="17"/><circle cx="25" cy="24" r="3"/></svg>
+          <div class="n">Eslabón 01</div>
+          <h5>Etiquetado de datos</h5>
+          <p class="who">Millones de personas —en su mayoría mujeres jóvenes— clasificando datos por salarios mínimos.</p>
+        </div>
+        <div class="link">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#f3ecdb" stroke-width="1.4"><circle cx="16" cy="16" r="11"/><path d="M 10 16 L 14 20 L 22 12"/></svg>
+          <div class="n">Eslabón 02</div>
+          <h5>Moderación de contenidos</h5>
+          <p class="who">Trabajadores expuestos durante horas a material brutal para que la plataforma parezca limpia.</p>
+        </div>
+        <div class="link">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#f3ecdb" stroke-width="1.4"><path d="M 4 24 L 12 12 L 20 18 L 28 8"/><line x1="4" y1="24" x2="28" y2="24"/><circle cx="12" cy="12" r="1.5" fill="#f3ecdb"/><circle cx="20" cy="18" r="1.5" fill="#f3ecdb"/></svg>
+          <div class="n">Eslabón 03</div>
+          <h5>Tierras raras</h5>
+          <p class="who">Adolescentes y niños extrayendo en condiciones peligrosas los minerales de los microprocesadores.</p>
+        </div>
+        <div class="link">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#f3ecdb" stroke-width="1.4"><path d="M 16 4 Q 6 4 6 14 Q 6 24 16 28 Q 26 24 26 14 Q 26 4 16 4 Z"/><circle cx="16" cy="14" r="3"/><line x1="16" y1="17" x2="16" y2="22"/></svg>
+          <div class="n">Eslabón 04</div>
+          <h5>Colonialismo de datos</h5>
+          <p class="who">Mapas genéticos, perfiles sanitarios y datos demográficos extraídos del Sur global bajo pretexto de ayuda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="quote">
+  <div class="o">✦&nbsp;✦&nbsp;✦</div>
+  <blockquote>Cuerpos marcados, mutilados, consumidos para que el flujo de los cálculos no se interrumpa.</blockquote>
+  <cite>León XIV · §173</cite>
+</div>
+
+<!-- SECTION IV: THREE PILLARS -->
+<div class="frame">
+<section class="panel" id="pillars">
+  <div class="panel-head">
+    <div class="pn">iv</div>
+    <div class="ph">
+      <div class="tag">Capítulo cuarto · Custodiar lo humano</div>
+      <h2>Tres ámbitos donde se juega <em>todo</em>.</h2>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar truth">
+      <div class="roman">i</div>
+      <h3>Verdad</h3>
+      <p>La IA no inventa la desinformación, pero es un <em>potente multiplicador</em>. Deepfakes, narrativas sesgadas, manipulación del imaginario colectivo.</p>
+      <div class="data">
+        <div class="data-item"><div class="label">Lo que pide</div><div class="v">Ecología de la comunicación</div></div>
+        <div class="data-item"><div class="label">Lo que defiende</div><div class="v">Periodismo serio · alfabetización digital</div></div>
+      </div>
+    </div>
+    <div class="pillar work">
+      <div class="roman">ii</div>
+      <h3>Trabajo</h3>
+      <p>La persona es fin, no medio. El beneficio no puede justificar sacrificar sistemáticamente el empleo. Las máquinas deben adaptarse al trabajador, no al revés.</p>
+      <div class="data">
+        <div class="data-item"><div class="label">Lo que critica</div><div class="v">PIB como única métrica</div></div>
+        <div class="data-item"><div class="label">Lo que propone</div><div class="v">Dignidad como criterio</div></div>
+      </div>
+    </div>
+    <div class="pillar freedom">
+      <div class="roman">iii</div>
+      <h3>Libertad</h3>
+      <p>Plataformas diseñadas para explotar fragilidades. Control no por prohibiciones, sino por «la arquitectura de la visibilidad» que moldea opiniones y elecciones.</p>
+      <div class="data">
+        <div class="data-item"><div class="label">Lo que advierte</div><div class="v">Conformismo · autocensura</div></div>
+        <div class="data-item"><div class="label">Lo que urge</div><div class="v">Sobriedad digital · transparencia</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- SECTION V: WEAPONS -->
+<div class="frame">
+<section class="panel" id="weapons">
+  <div class="panel-head">
+    <div class="pn">v</div>
+    <div class="ph">
+      <div class="tag">Capítulo quinto · El umbral más grave</div>
+      <h2>Armas e IA: la <em>línea</em> que no se cruza.</h2>
+    </div>
+  </div>
+
+  <div class="weapons-box">
+    <div class="label">Posición de la encíclica</div>
+    <p class="principal">No es lícito confiar a sistemas artificiales <em>decisiones letales o irreversibles</em>. No existe algoritmo que haga la guerra moralmente aceptable.</p>
+  </div>
+
+  <div class="criteria">
+    <div class="criterion">
+      <div class="cn">criterio i.</div>
+      <svg viewBox="0 0 36 36" fill="none" stroke="#6e1b1b" stroke-width="1.5"><circle cx="18" cy="12" r="5"/><path d="M 6 30 Q 18 18 30 30"/><circle cx="18" cy="12" r="1.5" fill="#6e1b1b"/></svg>
+      <h4>Responsabilidad humana identificable</h4>
+      <p>La cadena debe seguir siendo trazable y verificable. Quien planifica, entrena, autoriza y emplea ha de poder rendir cuentas.</p>
+    </div>
+    <div class="criterion">
+      <div class="cn">criterio ii.</div>
+      <svg viewBox="0 0 36 36" fill="none" stroke="#6e1b1b" stroke-width="1.5"><circle cx="18" cy="18" r="13"/><path d="M 18 8 V 18 L 24 22"/></svg>
+      <h4>Tiempo del juicio moral</h4>
+      <p>Las decisiones irreversibles no pueden tener como criterio supremo la rapidez ni la eficiencia.</p>
+    </div>
+    <div class="criterion">
+      <div class="cn">criterio iii.</div>
+      <svg viewBox="0 0 36 36" fill="none" stroke="#6e1b1b" stroke-width="1.5"><path d="M 18 4 L 30 8 V 18 Q 30 26 18 32 Q 6 26 6 18 V 8 Z"/><path d="M 12 18 L 16 22 L 24 14"/></svg>
+      <h4>Distinción y protección de civiles</h4>
+      <p>Ninguna tecnología puede confundir a combatientes y no combatientes, ni ignorar a las poblaciones indefensas.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- SECTION VI: TIMELINE -->
+<div class="frame">
+<section class="tl-section" id="tradition">
+  <div class="tl-head">
+    <div class="tag">Vi · Tradición</div>
+    <h2>135 años de doctrina social</h2>
+    <p>Pulse cada encíclica para ver qué aporta a la tradición que ahora se aplica a la IA.</p>
+  </div>
+  <div class="tl-wrap">
+    <div class="tl-line"></div>
+    <div class="tl-track" id="track"></div>
+    <div class="tl-card" id="card"></div>
+  </div>
+</section>
+</div>
+
+<!-- SECTION VII: FOUR IMPERATIVES -->
+<div class="frame">
+<section class="panel" id="call">
+  <div class="panel-head">
+    <div class="pn">vii</div>
+    <div class="ph">
+      <div class="tag">Conclusión · La obra de nuestro tiempo</div>
+      <h2>Cuatro <em>imperativos</em>.</h2>
+    </div>
+  </div>
+  <p class="panel-deck">León XIV propone una espiritualidad del «arquitecto sabio» como Nehemías. No espectadores resignados, sino constructores de comunión. El programa cabe en cuatro verbos.</p>
+
+  <div class="imps">
+    <div class="imp">
+      <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M 8 8 V 34 H 34 V 8 Q 21 4 8 8 Z"/><line x1="14" y1="14" x2="28" y2="14"/><line x1="14" y1="20" x2="28" y2="20"/><line x1="14" y1="26" x2="24" y2="26"/></svg>
+      <div class="vb">Imperativo i.</div>
+      <h4>Fidelidad a la verdad</h4>
+      <p>Custodiar un corazón que ama la verdad más que el impacto inmediato.</p>
+    </div>
+    <div class="imp">
+      <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M 4 18 L 21 10 L 38 18 L 21 26 Z"/><path d="M 12 22 V 30 Q 21 36 30 30 V 22"/><line x1="38" y1="18" x2="38" y2="28"/></svg>
+      <div class="vb">Imperativo ii.</div>
+      <h4>Inversión en educación</h4>
+      <p>El mundo digital es un nuevo continente que educar y evangelizar.</p>
+    </div>
+    <div class="imp">
+      <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M 21 34 C 8 24 8 14 13 11 Q 17 8 21 14 Q 25 8 29 11 C 34 14 34 24 21 34 Z"/></svg>
+      <div class="vb">Imperativo iii.</div>
+      <h4>Cuidado de las relaciones</h4>
+      <p>La carne humana sigue pidiendo ternura, manos y palabras buenas.</p>
+    </div>
+    <div class="imp">
+      <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M 21 6 Q 30 14 26 24 Q 22 32 21 36 Q 20 32 16 24 Q 12 14 21 6 Z"/><line x1="21" y1="20" x2="21" y2="36"/></svg>
+      <div class="vb">Imperativo iv.</div>
+      <h4>Amor a la justicia y la paz</h4>
+      <p>Mirar con lucidez las redes de producción digital y las nuevas esclavitudes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLOPHON -->
+<section class="col">
+  <div class="mk">✦</div>
+  <h2>Permanezcamos<br>siendo humanos.</h2>
+  <p>«La calidad de una civilización se mide no por el poder de sus medios, sino por el cuidado que sabe ofrecer.»</p>
+  <div class="sig">
+    Dado en Roma, junto a San Pedro<br>
+    El día <strong>15 de mayo del año 2026</strong><br>
+    Segundo del Pontificado de <strong>León PP. XIV</strong>
+  </div>
+</section>
+
+<footer class="foot">
+  Magnifica Humanitas · §1 — §245 · 111 páginas · 5 capítulos
+</footer>
+</div>
+
+<script>
+(function() {
+  var enc = [
+    { y: 1891, p: 'León XIII', n: 'Rerum Novarum', d: 'Inaugura la doctrina social moderna: cuestión obrera, salario justo, derecho de asociación. La encíclica que León XIV conmemora.' },
+    { y: 1931, p: 'Pío XI', n: 'Quadragesimo Anno', d: 'A los 40 años: principio de subsidiariedad. Crítica del capitalismo desregulado y del colectivismo.' },
+    { y: 1963, p: 'Juan XXIII', n: 'Pacem in Terris', d: 'Primera encíclica para "todos los hombres de buena voluntad". Paz, derechos humanos, desarme.' },
+    { y: 1967, p: 'Pablo VI', n: 'Populorum Progressio', d: 'El desarrollo es el nuevo nombre de la paz. La advertencia citada por León XIV: progreso técnico sin progreso moral se vuelve contra el hombre.' },
+    { y: 1981, p: 'Juan Pablo II', n: 'Laborem Exercens', d: 'El trabajo es para el hombre, no el hombre para el trabajo. Dignidad subjetiva del trabajador.' },
+    { y: 1991, p: 'Juan Pablo II', n: 'Centesimus Annus', d: 'Centenario, tras la caída del muro. Capitalismo democrático sólo si está enmarcado por la ley y al servicio de la libertad humana integral.' },
+    { y: 2009, p: 'Benedicto XVI', n: 'Caritas in Veritate', d: 'En la crisis financiera: la caridad debe encarnarse en estructuras económicas. Texto citado varias veces por León XIV.' },
+    { y: 2015, p: 'Francisco', n: "Laudato Si'", d: 'Cuidado de la Casa común. Crítica al paradigma tecnocrático que León XIV retoma como eje de su análisis de la IA.' },
+    { y: 2020, p: 'Francisco', n: 'Fratelli Tutti', d: 'Fraternidad y amistad social. Supera la doctrina de la guerra justa, posición que León XIV reafirma.' },
+    { y: 2026, p: 'León XIV', n: 'Magnifica Humanitas', d: 'La primera gran encíclica social del nuevo Pontífice. Aplica el cuerpo de la doctrina al desafío de la IA.', cur: true }
+  ];
+  var track = document.getElementById('track');
+  var card = document.getElementById('card');
+  var ai = enc.length - 1;
+  function render() {
+    track.innerHTML = '';
+    enc.forEach(function(e, i) {
+      var b = document.createElement('button');
+      b.className = 'tl-item' + (i === ai ? ' active' : '') + (e.cur ? ' cur' : '');
+      b.innerHTML = '<div class="tl-year">' + e.y + '</div><div class="tl-dot"></div>';
+      b.addEventListener('click', function() { ai = i; render(); });
+      track.appendChild(b);
+    });
+    var e = enc[ai];
+    card.innerHTML = '<div class="pope">' + e.p + (e.cur ? ' · La encíclica actual' : '') + '</div>' +
+      '<h3>' + e.n + '</h3><div class="y">' + e.y + '</div><p>' + e.d + '</p>';
+  }
+  render();
+
+  var rv = document.querySelectorAll('.rv');
+  if (rv.length) {
+    var io = new IntersectionObserver(function(en) {
+      en.forEach(function(x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }});
+    }, { threshold: 0.1 });
+    rv.forEach(function(el) { io.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>
